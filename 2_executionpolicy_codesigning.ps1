@@ -27,9 +27,10 @@ Export-PfxCertificate `
    -Password $CertPassword `
    -FilePath "C:\test.pfx"
 
+# Script musss nun noch zu den Trusted Root Publishern gepackt werden
 
 # Informationen über das erste Codesigning-Zertifikat aus meinem Store laden
 $signingcert =(dir Cert:\CurrentUser\My -CodeSigningCert)[0]
 
 #Signieren eines Skript im aktuellen Verzeicnis
-Set-AuthenticodeSignature .\end2end-http.ps1 -Certificate $signingcert
+Set-AuthenticodeSignature "C:\Code\test.ps1" -Certificate $signingcert
