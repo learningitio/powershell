@@ -24,3 +24,5 @@ function Transcript {
 }
 
 
+# Transcipt bei älteren Versionen kein Write-Host!
+
