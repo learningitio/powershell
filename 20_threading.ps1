@@ -26,3 +26,20 @@ $ip += "localhost"
 $ip | foreach-object -parallel  {
     test-connection $_
 } # -throttlelimit 2
+
+
+# Proof
+
+# Seq
+measure-command -expression {
+    $ip | foreach-object  {
+        test-connection $_
+    } 
+}
+
+# Par 
+measure-command -expression {
+    $ip | foreach-object -parallel  {
+        test-connection $_
+    } 
+}
