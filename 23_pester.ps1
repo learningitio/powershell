@@ -6,26 +6,23 @@ Install-Module Pester -Force -SkipPublisherCheck
 
 Import-Module Pester
 
-#Sample function to run tests against    
-function Add-Numbers{
-    param($a, $b)
-    return [int]$a + [int]$b
+# neues Projekt
+New-Fixture -Path .\ -Name "new"
+
+# Describe
+# It
+# Should be|beexactly|throw
+
+
+
+# Test
+Describe "FirstTest" {
+    It "true should be true" {
+        $true | Should be $true
+    }
 }
 
-#Group of tests
-Describe "Validate Add-Numbers" {
 
-        #Individual test cases
-        It "Should add 2 + 2 to equal 4" {
-            Add-Numbers 2 2 | Should Be 4
-        }
-
-        It "Should handle strings" {
-            Add-Numbers "2" "2" | Should Be 4
-        }
-
-        It "Should return an integer"{
-            Add-Numbers 2.3 2 | Should BeOfType Int32
-        }
-
+function PesterFunction {
+    write-host "test"
 }

@@ -6,6 +6,8 @@ Install-Module UniversalDashboard.Community -AcceptLicense
 
 
 # First Start
+Install-Module UniversalDashboard.Community -AcceptLicense
+
 
 # Theme change
 
