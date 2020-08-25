@@ -7,7 +7,7 @@ Add-Type -AssemblyName System.Windows.Forms
 [System.Windows.Forms.Application]::EnableVisualStyles()
 
 $network_scanner                 = New-Object system.Windows.Forms.Form
-$network_scanner.ClientSize      = New-Object System.Drawing.Point(327,418)
+$network_scanner.ClientSize      = New-Object System.Drawing.Point(365,418)
 $network_scanner.text            = "Network Scanner"
 $network_scanner.TopMost         = $false
 
@@ -28,15 +28,15 @@ $ComboBox1.Font                  = New-Object System.Drawing.Font('Microsoft San
 
 $GetactiveIPs                    = New-Object system.Windows.Forms.Button
 $GetactiveIPs.text               = "Get Active IPs"
-$GetactiveIPs.width              = 92
+$GetactiveIPs.width              = 118
 $GetactiveIPs.height             = 30
-$GetactiveIPs.location           = New-Object System.Drawing.Point(219,27)
+$GetactiveIPs.location           = New-Object System.Drawing.Point(216,26)
 $GetactiveIPs.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',10)
 
 $DataGridView1                   = New-Object system.Windows.Forms.DataGridView
-$DataGridView1.width             = 300
+$DataGridView1.width             = 348
 $DataGridView1.height            = 337
-$DataGridView1.location          = New-Object System.Drawing.Point(9,67)
+$DataGridView1.location          = New-Object System.Drawing.Point(8,67)
 
 $network_scanner.controls.AddRange(@($TextBox1,$ComboBox1,$GetactiveIPs,$DataGridView1))
 
