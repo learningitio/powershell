@@ -30,6 +30,8 @@ $DataGridView1                   = New-Object system.Windows.Forms.DataGridView
 $DataGridView1.width             = 267
 $DataGridView1.height            = 337
 $DataGridView1.location          = New-Object System.Drawing.Point(6,68)
+$dataGridView1.ColumnCount       = 1
+
 
 $Debugging                       = New-Object system.Windows.Forms.TextBox
 $Debugging.multiline             = $false
@@ -63,25 +65,22 @@ function PingAndGridOut {
     $okt2 = $ip_formatted[1]
     $okt3 = $ip_formatted[2]
 
+
     for ($i = 1; $i -lt 255; $i++){
-
-        $ip = $okt1 + "." + $okt2 + "." + $okt3 + "." + $i
-        $DataGridView1.Rows.Add($ip)
-        <#
-                if (Test-Connection $ip){
-
-            $DataGridView1.Rows.Add($ip)
+        write-host "$i"
+        $ip_new = $okt1 + "." + $okt2 + "." + $okt3 + "." + $i
+        Write-Host "$ip_new"
+        if (Test-Connection $ip_new -count 1 -quiet){
+            write-host "$ip_new available"
+            $DataGridView1.Rows.Add($ip_new)
 
         }
-        #>
+        
 
         
 
     }
 
-
-
-    $Debugging.Text = $ip_formatted[0]
     
 }
 
