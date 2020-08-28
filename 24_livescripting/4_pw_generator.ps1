@@ -11,7 +11,3 @@ $password += Get-RandomCharacters -length 1 -characters '1234567890'
 $password += Get-RandomCharacters -length 1 -characters '!"§$%&/()=?}][{@#*+'
  
 Write-Host $password
- 
-$password = Scramble-String $password
- 
-Write-Host $password
