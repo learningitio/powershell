@@ -28,7 +28,7 @@ $DataGridView1                   = New-Object system.Windows.Forms.DataGridView
 $DataGridView1.width             = 267
 $DataGridView1.height            = 337
 $DataGridView1.location          = New-Object System.Drawing.Point(6,68)
-$dataGridView1.ColumnCount       = 1
+$DataGridView1.ColumnCount       = 1
 
 
 
@@ -62,18 +62,14 @@ function PingAndGridOut {
 
     for ($i = 1; $i -lt 255; $i++){
         [System.Windows.Forms.Application]::DoEvents() 
-        write-host "$i"
         $ip_new = $okt1 + "." + $okt2 + "." + $okt3 + "." + $i
         Write-Host "$ip_new"
-        start-job -Name "$i" -ScriptBlock {
             if (Test-Connection $ip_new -count 1 -quiet){
                 write-host "$ip_new available"
                 $DataGridView1.Rows.Add($ip_new)
     
                 [System.Windows.Forms.Application]::DoEvents()
             }
-        }
-
     }
 
     $this.Enabled = $true
