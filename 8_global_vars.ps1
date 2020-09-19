@@ -1,6 +1,5 @@
 # Private, Local, Script und Global
 
-#Private: Im unteren Bereich nicht ansprechbar
 #Local: Standard
 #Script: Vars aus Funktion auch im Script
 #Global: Überall
