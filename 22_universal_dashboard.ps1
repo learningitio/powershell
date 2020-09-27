@@ -1,24 +1,3 @@
-Install-Module UniversalDashboard.Community -AcceptLicense
-
-# https://dev.to/jcoelho/powershell-universal-dashboard-making-interactive-dashboards-9kl
-
-# https://docs.universaldashboard.io/getting-started
-
-
-# First Start
-# Install-Module UniversalDashboard.Community -AcceptLicense
-Import-Module UniversalDashboard.Community
-
-# Theme change
-
-# Monitoring
-
-# Charts
-
-
-
-# dashboard:
-
 # First Start
 Install-Module UniversalDashboard.Community 
 Import-Module UniversalDashboard.Community
@@ -32,31 +11,22 @@ $dashboard = New-UDDashboard -Title "Learning IT" -theme $theme -Content{
         New-UDColumn -Size 3 {
 
             New-UDMonitor -Title "CPU" -Type Line -DataPointHistory 20 -RefreshInterval 10 -ChartBackgroundColor '#80FF6B63' -ChartBorderColor '#FFFF6B63'  -Endpoint {
-            (get-childitem).count | Out-UDMonitorData
+            (get-childitem -Path "C:\Users\Administrator\Documents\Powershell Expertenkurs\logs").count | Out-UDMonitorData
 
             }           
         }
 
         New-UDColumn -Size 3 {
-            New-UDChart -Title "Disk Space" -Type Doughnut -RefreshInterval 10 -Endpoint {  
-
-                    Get-CimInstance -ClassName Win32_LogicalDisk | Where-Object {$_.DriveType -eq '3'} | Select-Object -First 1 -Property DeviceID,Size,FreeSpace | ForEach-Object {
-                    @([PSCustomObject]@{
-                        Label = "Used Space"
-                        Data = [Math]::Round(($_.Size - $_.FreeSpace) / 1GB, 2);
-                    },
-                    [PSCustomObject]@{
-                        Label = "Free Space"
-                        Data = [Math]::Round($_.FreeSpace / 1GB, 2);
-                    }) | Out-UDChartData -DataProperty "Data" -LabelProperty "Label" -BackgroundColor @("#80FF6B63","#8028E842") -HoverBackgroundColor @("#80FF6B63","#8028E842") -BorderColor @("#80FF6B63","#8028E842") -HoverBorderColor @("#F2675F","#68e87a")     
-            }
-
-
-
-                } 
-            }
+            New-UDChart -Title "Threads by Process" -Type Doughnut -RefreshInterval 5 -Endpoint {  
+                Get-Process | ForEach-Object { [PSCustomObject]@{ Name = $_.Name; Threads = $_.Threads.Count } } | Out-UDChartData -DataProperty "Threads" -LabelProperty "Name"  
+            } -Options @{  
+                 legend = @{  
+                     display = $false  
+                 }  
+               }
+        }
 
     }
 }
 
-Start-UDDashboard -Dashboard $dashboard -Port 10096
+Start-UDDashboard -Dashboard $dashboard -Port 10097

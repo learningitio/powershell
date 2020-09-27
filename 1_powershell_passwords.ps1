@@ -1,4 +1,4 @@
-# Methode 1 - nicht empfehlenswert
+# Methode 1 - nicht empfehlenswert (Da die Hashes geknackt werden könnten), aber noch häufig im Einsatz
 
 # Anlegen der Creds und Export
 $user = Read-Host "Enter Username"
@@ -12,13 +12,6 @@ $user = Read-Host "Enter Username"
 $File = "C:\pass.txt"
 $MyCredential = New-Object -TypeName System.Management.Automation.PSCredential `
  -ArgumentList $User, (Get-Content $File | ConvertTo-SecureString)
-
-# ABER
-$password = ConvertTo-SecureString 'P@ssw0rd' -AsPlainText -Force
-$Ptr = [System.Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($password)
-$result 
-
-
 
 # Methode 2 - Powershell SecretManagement
 Install-Module -Name Microsoft.PowerShell.SecretsManagement -AllowPrerelease

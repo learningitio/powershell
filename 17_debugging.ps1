@@ -1,3 +1,5 @@
+# Inahltlich irrelevant - lediglich Beispielsscript für Debugging
+
 # Allgemein: Strict typing!
 $zahl = read-host "Gib eine Zahl deiner Wahl ein"
 $zahl + 5

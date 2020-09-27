@@ -4,9 +4,6 @@ start-job -scriptblock {
     start-sleep -seconds 10
 }
 
-# Alternativ für kurze Tasks (zB API-Call)
-get-eventlog -Logname System -Job
-
 # Jobs auflisten
 get-job
 
@@ -23,13 +20,17 @@ $ip += "8.8.8.8"
 $ip += "8.8.4.4"
 $ip += "localhost"
 
+# Parallele Ausfürhung ohne Limit
 $ip | foreach-object -parallel  {
     test-connection $_
-} # -throttlelimit 2
+} 
 
+# Parallele Ausfürhung mit Limit (2 gleichzeitig)
+$ip | foreach-object -parallel  {
+    test-connection $_
+}  -throttlelimit 2
 
-# Proof
-
+# Vergleich von Sequentieller Durchfürhung / Paralleler Durchführung
 # Seq
 measure-command -expression {
     $ip | foreach-object  {

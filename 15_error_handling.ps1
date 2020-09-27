@@ -8,7 +8,6 @@ $ErrorActionPreference
 
 <#
 SilentlyContinue: Die Fehlermeldung wird unterdrückt und PowerShell fährt mit der Ausführung des Codes fort
-Ignore (seit Version 3): Der Fehler wird ignoriert und taucht nicht im Error-Stream auf.
 Continue: Dabei handelt es sich um das Standard­verhalten. Fehler­meldungen werden (in roter Schrift) ausgegeben und das Script setzt seine Ausführung fort.
 Stop: Erzwingt ein Verhalten wie bei einem terminierenden Fehler, die Ausführung wird also abgebrochen.
 Inquire: Fragt den Benutzer, ob er die Ausführung fortsetzen möchte.

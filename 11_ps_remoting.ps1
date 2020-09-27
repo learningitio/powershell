@@ -5,7 +5,7 @@
 
 Enable-PSRemoting
 
-# verwalteter Server
+# Non-AD Server/Computer, auf welchen zugegriffen werden soll (zugreifender Host ist Server01 in diesem Beispiel)
 winrm set winrm/config/client @{TrustedHosts="Server01"}
 
 # zu verwaltender Server
@@ -22,9 +22,6 @@ Invoke-Command -ComputerName Server01 -ScriptBlock {
     $a = 1
     write-host "$a"
 }
-
-# Einschub: Scope Variablen
-Write-Host "Source: $a"
 
 # Proof, dass separate Session
 Invoke-Command -ComputerName Server01 -ScriptBlock {

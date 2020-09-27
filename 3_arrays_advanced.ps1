@@ -9,13 +9,13 @@ $array[0] = "test"
 # Array auf Inhalt prüfen
 $array -contains "test"
 
-# Array bestimmten Inhalt ausgeben
+# Bestimmten Array Eintrag ausgeben
 $array -eq "test"
 
 # Array bestimmten Inhalt ausgeben
 $array -eq "negotiation"
 
-# Arrays addieren
+# Arrays "addieren"
 $array2 = @()
 $array2 += "test3"
 $array3 = $array2 + $array
